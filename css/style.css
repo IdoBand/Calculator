@@ -1,0 +1,225 @@
+* {font-family: "montserrat",sans-serif;
+    text-decoration: none;
+    list-style: none
+ }
+
+body { margin:0;
+        display: grid;
+        grid-template-columns: 2fr 2fr 2fr;
+        grid-template-areas:"header header header " 
+                            "blank-left calculator blank-right"
+                            "blank-left calculator blank-right";
+}
+
+.dark {
+    background-color: black;
+}
+
+body.dark button{
+    background-color: #838080;
+}
+
+#blank-left { grid-area: blank-left;}
+#blank-right { grid-area: blank-right;}
+
+img {height: 20px;
+    width: 20px;
+}
+
+
+/* ##################################################################### */
+#calc { grid-area: calculator;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-areas: "left-column middle-column right-column"
+                                "scientific scientific scientific"
+                                "operations-log operations-log operations-log";
+    }
+
+#left-column {
+    grid-area: left-column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+
+    }
+/* ###################### */
+
+#middle-column {
+    grid-area: middle-column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:"wide wide wide"
+                        "nums nums nums";}
+
+#wide { 
+    grid-area: wide;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+}  
+    
+#nums { 
+    grid-area: nums;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+
+/* ###################### */
+#right-column {
+    grid-area: right-column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+button{border-radius: 5px;
+    border-width: 0.5px;
+    margin: 1px;
+    height: 30px;
+    background-color: rgb(95, 95, 219);
+    color: whitesmoke;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 3px;
+    min-height: 40px;
+}
+
+button:hover{border-radius: 5px;
+    border-width: 0.5px;
+    margin: 1px;
+    height: 30px;
+    background-color: rgb(95, 95, 219);
+    color: whitesmoke;
+    cursor: pointer;
+    padding: 3px;
+    min-height: 40px;
+    font-size: 16px;
+    color: black;
+}
+
+.digit {
+    background-image: linear-gradient(75deg, #b4c0da, #9ce1cb);
+    border-radius: 5px;
+    border-width: 0.5px;
+    color: black;
+}
+/* scientific */
+
+#scientific{grid-area: scientific;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "scientific-header scientific-header"
+                        "power base";
+}
+
+#scientific-header{
+    grid-area: scientific-header;
+    
+}
+
+.signs {
+    border-radius: 5px;
+    border-width: 0.5px;
+    margin: 1px;
+    height: 30px;
+    background-color: rgb(83, 83, 134);
+    color: whitesmoke;
+    transition: 0.3s;
+    padding: 3px;
+    min-height: 40px;
+    text-align: center;
+}
+
+
+
+#power{
+    grid-area: power;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#base{
+    grid-area: base;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+#base button{
+    height: 97%;
+}
+
+#operations-log {grid-area: operations-log;
+    display: grid;
+    grid-template-areas: "operations-log-header"
+                         "log";
+}
+
+#operations-log-header {
+    grid-area: operations-log-header;
+}
+
+.signs {
+    grid-area: operations-log-header;
+    border-radius: 5px;
+    border-width: 0.5px;
+    margin: 1px;
+    height: 30px;
+    background-color: rgb(83, 83, 134);
+    color: whitesmoke;
+    transition: 0.3s;
+    padding: 3px;
+    min-height: 40px;
+    text-align: center;
+}
+
+#log {
+    grid-area: log;
+    text-indent: 3px;
+    border-style: ridge;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+
+
+/*###################### Header ######################*/
+
+header {
+    position: sticky;
+    top: 0;
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-color: #bfc4c9;
+    transition: 0.4s;
+    width: 100%;
+    margin: 0;
+}
+
+.header a { 
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    color: whitesmoke;
+    margin: 5px;}
+
+.header h1 {
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px #838080;}
+
+.header:hover {
+    background-color: #8d8f92;
+    }
+
+.logo{
+    border-radius: 40px;
+    width: 80px; 
+    height:80px;
+}
+
+#user-img{
+    margin-left: auto;
+    padding: 5px;
+}
