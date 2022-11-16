@@ -15,6 +15,9 @@ body { margin:0;
     background-color: black;
 }
 
+.dark #log {background-color: #bfc4c9}
+.dark .signs {background-color: rgb(4, 4, 83);}
+
 body.dark button{
     background-color: #838080;
 }
@@ -50,12 +53,33 @@ img {height: 20px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:"wide wide wide"
                         "nums nums nums";}
+                        
 
 #wide { 
     grid-area: wide;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-template-areas: "my-calculator"
+                         "display"
+                         "c";
 }  
+
+#my-calculator {grid-area: my-calculator;
+    height: 33px;
+}
+#display{grid-area: display;
+    display: flex;
+    align-items: center;
+    background-color: #bfc4c9;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: ridge;
+    margin: 1px;
+    padding: 4px;
+    height: 40px;
+}
+#c{grid-area: c;
+}
     
 #nums { 
     grid-area: nums;
@@ -74,27 +98,28 @@ img {height: 20px;
 
 button{border-radius: 5px;
     border-width: 0.5px;
-    margin: 1px;
-    height: 30px;
     background-color: rgb(95, 95, 219);
     color: whitesmoke;
     cursor: pointer;
     transition: 0.3s;
     padding: 3px;
-    min-height: 40px;
+    margin: 1px;
+    padding: 3px;
+    height: 40px;
+
 }
 
 button:hover{border-radius: 5px;
     border-width: 0.5px;
-    margin: 1px;
-    height: 30px;
     background-color: rgb(95, 95, 219);
     color: whitesmoke;
     cursor: pointer;
-    padding: 3px;
-    min-height: 40px;
     font-size: 16px;
     color: black;
+}
+
+ #C {
+    background-color: rgb(216, 68, 68);
 }
 
 .digit {
@@ -118,15 +143,17 @@ button:hover{border-radius: 5px;
 }
 
 .signs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 5px;
     border-width: 0.5px;
-    margin: 1px;
-    height: 30px;
     background-color: rgb(83, 83, 134);
     color: whitesmoke;
     transition: 0.3s;
-    padding: 3px;
-    min-height: 40px;
+    margin: 1px;
+
+    height: 40px;
     text-align: center;
 }
 
@@ -150,27 +177,13 @@ button:hover{border-radius: 5px;
 }
 
 #operations-log {grid-area: operations-log;
-    display: grid;
-    grid-template-areas: "operations-log-header"
-                         "log";
+                display: grid;
+                grid-template-areas: "operations-log-header"
+                                    "log";
 }
 
 #operations-log-header {
     grid-area: operations-log-header;
-}
-
-.signs {
-    grid-area: operations-log-header;
-    border-radius: 5px;
-    border-width: 0.5px;
-    margin: 1px;
-    height: 30px;
-    background-color: rgb(83, 83, 134);
-    color: whitesmoke;
-    transition: 0.3s;
-    padding: 3px;
-    min-height: 40px;
-    text-align: center;
 }
 
 #log {
@@ -223,3 +236,9 @@ header {
     margin-left: auto;
     padding: 5px;
 }
+
+
+@media only screen and (max-width: 600px) {
+    
+    
+  }

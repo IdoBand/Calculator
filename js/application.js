@@ -12,5 +12,5 @@ function developerDetails() {
 
 // func requested on part I sec. 10
 function displayButtonInfo(id) {
-    alert(id);
+    // alert(id);
 };

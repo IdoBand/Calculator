@@ -11,7 +11,7 @@
         <a href="./index.html"><h1>Calculator</h1></a>
         <img class="logo" id="user-img" src="./images/Profile.png">
     </header>
-    <body>
+    <body class="">
         <div id="blank-left">
 
         </div>
@@ -23,15 +23,15 @@
                 <button onclick="displayButtonInfo(id)" type="button" id="History"><img src="./images/history.png" alt="History"></button>
                 <button onclick="displayButtonInfo(id)" type="button" id="scientific-mode"><img src="./images/n-square-root.png" alt="n-square-root.png"></button>
                 <button onclick="displayButtonInfo(id)" type="button" id="Basic-mode"><img src="./images/atmosphere.png" alt=""></button>
-                <button type="button" id="">&nbsp</button>
-                <button type="button" id="">&nbsp</button>
+                <div id="" class="signs">&nbsp</div>
+                <div id="" class="signs">&nbsp</div>
             </div>
 
             <div id="middle-column">
                 <div id="wide">
-                    <button type="button">My Calculator</button>
-                    <button type="button">Screen</button>
-                    <button type="button">C</button>
+                    <div id="my-calculator" class="signs">My Calculator</div>
+                    <div id="display"></div>
+                    <button id="C" class="C">C</button>
                 </div>
                 <div id="nums">
                     <button onclick="displayButtonInfo(id)" class="digit" id="7" type="button">7</button>
@@ -51,13 +51,13 @@
             </div>
 
             <div id="right-column">
-                <button onclick="displayButtonInfo(id)" id="Settings" type="button"><img src="./images/settings.png" alt = "settings"></button>
-                <button onclick="displayButtonInfo(id)" id="Back" type="button"><img src="./images/back.png" alt = "back"></button>
-                <button onclick="displayButtonInfo(id)" id="/" type="button">/</button>
-                <button onclick="displayButtonInfo(id)" id="X" type="button">X</button>
-                <button onclick="displayButtonInfo(id)" id="-" type="button">-</button>
-                <button onclick="displayButtonInfo(id)" id="+" type="button">+</button>
-                <button onclick="displayButtonInfo(id)" id="=" type="button">=</button>
+                <button onclick="displayButtonInfo(id)" id="settings" type="button"><img src="./images/settings.png" alt="settings"></button>
+                <button onclick="displayButtonInfo(id)" class="back" id="back" type="button"><img src="./images/back.png" alt="back"></button>
+                <button onclick="displayButtonInfo(id)" class="operator" id="/" type="button">/</button>
+                <button onclick="displayButtonInfo(id)" class="operator" id="X" type="button">*</button>
+                <button onclick="displayButtonInfo(id)" class="operator" id="-" type="button">-</button>
+                <button onclick="displayButtonInfo(id)" class="operator" id="+" type="button">+</button>
+                <button onclick="displayButtonInfo(id)" class="eval" id="=" type="button">=</button>
 
             </div>
 
@@ -80,7 +80,7 @@
             <div id="operations-log">
                 <div id="operations-log-header" class="signs">Operations-log</div>
                 <div id="log">
-                    <h3>test 12 3</h3>
+                    <h3>test 1 2 3</h3>
 
                 </div>
 
@@ -95,6 +95,7 @@
         </div>
 
 
-        <script src="./js/main.js"></script>
+        <script src="./js/calculator.js"></script>
+        <script src="./js/application.js"></script>
     </body>
 </html>
