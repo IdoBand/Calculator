@@ -3,26 +3,23 @@
     <head>
         <meta charset="UTF-8" dir="ltr" name="viewport" content="width=device-width, initial-scale=1">
         <title>Ido Band - Calculator</title>
-        <!-- <link rel="" type="" href=""> -->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="icon" href="./images/calculator.png">
     </head>
-    <header class="header">
-        <a href="./index.html"><img class="logo" src="./images/logo.jpg" alt="logo"></a>
-        <a href="./index.html"><h1>Calculator</h1></a>
-        <img class="logo" id="user-img" src="./images/Profile.png">
-    </header>
     <body class="">
-        <div id="blank-left">
-
-        </div>
+        <header class="header">
+            <a href="./index.html"><img class="logo" src="./images/logo.jpg" alt="logo"></a>
+            <a href="./index.html"><h1>Calculator</h1></a>
+            <img class="logo" id="user-img" src="./images/Profile.png">
+        </header>
 
         <div id="calc">
             <div id="left-column">
-                <button onclick="developerDetails()" id="Info" type="button"><img src="./images/info.png" alt="Info"></button>
-                <button onclick="displayButtonInfo(id)" type="button" id="Dark mode"><img src="./images/bulb.png" alt="Dark mode"></button>
-                <button onclick="displayButtonInfo(id)" type="button" id="History"><img src="./images/history.png" alt="History"></button>
-                <button onclick="displayButtonInfo(id)" type="button" id="scientific-mode"><img src="./images/n-square-root.png" alt="n-square-root.png"></button>
-                <button onclick="displayButtonInfo(id)" type="button" id="Basic-mode"><img src="./images/atmosphere.png" alt=""></button>
+                <button onclick="developerDetails()" id="info" type="button"><img src="./images/info.png" alt="Info"></button>
+                <button onclick="darkMode()" class="on-off" type="button" id="dark-mode"><img src="./images/bulb.png" alt="Dark mode"></button>
+                <button onclick="historyOnOff()" type="button" id="history"><img src="./images/history.png" alt="History"></button>
+                <button onclick="scientificOn()" type="button" class="on-off" id="scientific-mode"><img src="./images/n-square-root.png" alt="n-square-root.png"></button>
+                <button onclick="basicOn()" class="on-off" type="button" id="basic-mode"><img src="./images/atmosphere.png" alt=""></button>
                 <div id="" class="signs">&nbsp</div>
                 <div id="" class="signs">&nbsp</div>
             </div>
@@ -54,7 +51,7 @@
                 <button onclick="displayButtonInfo(id)" id="settings" type="button"><img src="./images/settings.png" alt="settings"></button>
                 <button onclick="displayButtonInfo(id)" class="back" id="back" type="button"><img src="./images/back.png" alt="back"></button>
                 <button onclick="displayButtonInfo(id)" class="operator" id="/" type="button">/</button>
-                <button onclick="displayButtonInfo(id)" class="operator" id="X" type="button">*</button>
+                <button onclick="displayButtonInfo(id)" class="operator" id="*" type="button">X</button>
                 <button onclick="displayButtonInfo(id)" class="operator" id="-" type="button">-</button>
                 <button onclick="displayButtonInfo(id)" class="operator" id="+" type="button">+</button>
                 <button onclick="displayButtonInfo(id)" class="eval" id="=" type="button">=</button>
@@ -76,18 +73,13 @@
                     <button type="button">Base2</button>
                 </div>
             </div>
-
-            <div id="operations-log">
+            <!-- history mode -->
+            <div id="operations-log"> 
                 <div id="operations-log-header" class="signs">Operations-log</div>
                 <div id="log">
-                    <h3>test 1 2 3</h3>
+                
 
                 </div>
-
-            </div>
-
-
-            <div id="blank-left">
 
             </div>
 
