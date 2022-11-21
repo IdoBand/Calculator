@@ -23,6 +23,10 @@ body.dark button{
     background-color: #838080;
 }
 
+#display.light {
+    background-color: rgb(212, 188, 127);
+}
+
 /* #blank-left { grid-area: blank-left;} */
 /* #blank-right { grid-area: blank-right;} */
 
@@ -130,13 +134,17 @@ button{border-radius: 5px;
     margin: 1px;
     padding: 3px;
     height: 40px;
+    font-size: 20px;
 
 }
 
 button:hover{border-radius: 5px;
     cursor: pointer;
     color: black;
+    background-color: rgb(92, 92, 175);
 }
+
+
 
  #C {
     background-color: rgb(216, 68, 68);
@@ -147,7 +155,13 @@ button:hover{border-radius: 5px;
     border-radius: 5px;
     border-width: 0.5px;
     color: black;
+    transition: 0.4s;
 }
+
+.digit:hover {
+    background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
+}
+
 /* scientific */
 
 #scientific{grid-area: scientific;
@@ -273,6 +287,9 @@ body { margin:0;
 body.dark button{
     background-color: #838080;
 }
+#display.dark {
+    background-color: rgb(217, 219, 95);
+}
 
 #blank-left { grid-area: blank-left;}
 #blank-right { grid-area: blank-right;}
@@ -360,17 +377,16 @@ button{border-radius: 5px;
     margin: 1px;
     padding: 3px;
     height: 40px;
+    font-size: 20px;
 
 }
 
 button:hover{border-radius: 5px;
-    border-width: 0.5px;
-    background-color: rgb(95, 95, 219);
-    color: whitesmoke;
     cursor: pointer;
-    font-size: 15px;
     color: black;
+    background-color: rgb(92, 92, 175);
 }
+
 
     #C {
     background-color: rgb(216, 68, 68);
@@ -381,6 +397,11 @@ button:hover{border-radius: 5px;
     border-radius: 5px;
     border-width: 0.5px;
     color: black;
+    transition: 0.4s;
+}
+
+.digit:hover {
+    background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
 }
 /* scientific */
 
@@ -454,8 +475,6 @@ button:hover{border-radius: 5px;
     background-color: #bfc4c9;
     margin: 1px;
 }
-
-
 
 /*###################### Header ######################*/
 

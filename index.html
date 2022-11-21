@@ -15,11 +15,11 @@
 
         <div id="calc">
             <div id="left-column">
-                <button onclick="developerDetails()" id="info" type="button"><img src="./images/info.png" alt="Info"></button>
-                <button onclick="darkMode()" class="on-off" type="button" id="dark-mode"><img src="./images/bulb.png" alt="Dark mode"></button>
-                <button onclick="historyOnOff()" type="button" id="history"><img src="./images/history.png" alt="History"></button>
-                <button onclick="scientificOn()" type="button" class="on-off" id="scientific-mode"><img src="./images/n-square-root.png" alt="n-square-root.png"></button>
-                <button onclick="basicOn()" class="on-off" type="button" id="basic-mode"><img src="./images/atmosphere.png" alt=""></button>
+                <button onclick="developerDetails()" id="info" type="button">&#128712;</button>
+                <button class="on-off" type="button" id="light">&#128161;</button>
+                <button type="button" id="history">&#128343;</button>
+                <button type="button" class="on-off" id="scientific-mode">&#8732;</button>
+                <button class="on-off" type="button" id="basic-mode">&#9729;</button>
                 <div id="" class="signs">&nbsp</div>
                 <div id="" class="signs">&nbsp</div>
             </div>
@@ -27,61 +27,69 @@
             <div id="middle-column">
                 <div id="wide">
                     <div id="my-calculator" class="signs">My Calculator</div>
-                    <div id="display"></div>
+                    <div id="display" class=""></div>
                     <button id="C" class="C">C</button>
                 </div>
                 <div id="nums">
-                    <button onclick="displayButtonInfo(id)" class="digit" id="7" type="button">7</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="8" type="button">8</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="9" type="button">9</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="4" type="button">4</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="5" type="button">5</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="6" type="button">6</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="1" type="button">1</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="2" type="button">2</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="3" type="button">3</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="+ / -" type="button">+ -</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="0" type="button">0</button>
-                    <button onclick="displayButtonInfo(id)" class="digit" id="." type="button">.</button>
+                    <button class="digit" id="7" type="button">7</button>
+                    <button class="digit" id="8" type="button">8</button>
+                    <button class="digit" id="9" type="button">9</button>
+                    <button class="digit" id="4" type="button">4</button>
+                    <button class="digit" id="5" type="button">5</button>
+                    <button class="digit" id="6" type="button">6</button>
+                    <button class="digit" id="1" type="button">1</button>
+                    <button class="digit" id="2" type="button">2</button>
+                    <button class="digit" id="3" type="button">3</button>
+                    <button class="digit" id="+ / -" type="button">&#8723;</button>
+                    <button class="digit" id="0" type="button">0</button>
+                    <button class="digit" id="." type="button">.</button>
                 </div>
 
             </div>
 
             <div id="right-column">
-                <button onclick="displayButtonInfo(id)" id="settings" type="button"><img src="./images/settings.png" alt="settings"></button>
-                <button onclick="displayButtonInfo(id)" class="back" id="back" type="button"><img src="./images/back.png" alt="back"></button>
-                <button onclick="displayButtonInfo(id)" class="operator" id="/" type="button">/</button>
-                <button onclick="displayButtonInfo(id)" class="operator" id="*" type="button">X</button>
-                <button onclick="displayButtonInfo(id)" class="operator" id="-" type="button">-</button>
-                <button onclick="displayButtonInfo(id)" class="operator" id="+" type="button">+</button>
-                <button onclick="displayButtonInfo(id)" class="eval" id="=" type="button">=</button>
+                <button id="settings" type="button">&#9881;
+                    <!-- <ul id="hi">
+                        <button class="sub-settings" id="fontfamily"></button>
+                        <button class="sub-settings" id="backgroundcolor"></button>
+                        <button class="sub-settings" id="darkmode"></button>
+
+                    </ul> -->
+                </button>
+                <button class="back" id="back" type="button">&#10152;</button>
+                <button class="operator" id="/" type="button">/</button>
+                <button class="operator" id="*" type="button">X</button>
+                <button class="operator" id="-" type="button">-</button>
+                <button class="operator" id="+" type="button">+</button>
+                <button class="equal" id="equal" type="button">=</button>
 
             </div>
 
-            <div id="scientific">
-                <div id="scientific-header" class="signs">Scientific</div>
+            <main id="scientific">
+                <div id="scientific-header" class="signs">&#8732; Scientific</div>
                 <div id="power">
                     <button type="button">X^2</button>
-                    <button type="button">X^0.5</button>
+                    <button type="button">	
+                        &#8730;</button>
                     <button type="button">mod</button>
                     <button type="button">X^y</button>
                     <button type="button">X^0.5y</button>
-                    <button type="button">Pi</button>
+                    <button type="button">&#x3C0;</button>
                 </div>
                     
                 <div id="base">
                     <button type="button">Base2</button>
                 </div>
-            </div>
+            </main>
             <!-- history mode -->
-            <div id="operations-log"> 
-                <div id="operations-log-header" class="signs">Operations-log</div>
+            <main id="operations-log"> 
+                <div id="operations-log-header" class="signs">&#128343; Operations-log</div>
                 <div id="log">
                 
 
                 </div>
 
-            </div>
+            </main>
 
 
         </div>
