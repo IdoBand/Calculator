@@ -1,8 +1,18 @@
 {
+  "scripts": {
+    "build": "sass scss/style.scss scss/style.css",
+    "dev-server": "http-server src",
+    "dev-sass": "sass scss/style.scss css/style.css --watch",
+    "dev": "npm run dev-server & npm run dev-sass",
+    "start": "echo \"No start script\" && exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
   "dependencies": {
     "http-server": "^14.1.1"
   },
   "devDependencies": {
+    "sass": "^1.56.1",
     "typescript": "^4.9.3"
   }
 }

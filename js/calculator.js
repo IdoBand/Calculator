@@ -3,38 +3,50 @@ const qasCalc = document.querySelectorAll.bind(document);
 const byIdCalc = document.getElementById.bind(document);
 let mathValues = {
     scientific: false,
+    remote: false,
     firstOperand: '',
     secondOperand: '',
     currentOperator: '',
     valueCalculated: ''
 };
+// screen display 
 const display = byIdCalc('display');
+// history log
+const log = byIdCalc('log');
+// digit buttons event listener
 let digitBtns = qasCalc('.digit');
 digitBtns.forEach(button => {
     button.addEventListener('click', (e) => {
-        digitClick(e);
+        let lastChar = display.innerText.charAt(display.innerText.length - 1);
+        digitClick(e, lastChar);
     });
 });
-function digitClick(e) {
-    if (mathValues.scientific === true) { // scientific mode in ON
-        display.innerText += e.target.innerText;
+// digit buttons event handler
+function digitClick(e, lastChar) {
+    if (e.target.innerText === '0' && lastChar === '/') { //preventing division by 0
+        alert("YOUR'E NOT ALLOWED TO DIVIDE BY 0!");
     }
-    else { // scientific mode in OFF
+    else if (mathValues.scientific === true) { // scientific mode
+        display.innerText += e.target.id;
+    }
+    else { // basic mode
         if (mathValues.currentOperator === '') {
-            display.innerText += e.target.innerText;
+            display.innerText += e.target.id;
             mathValues.firstOperand = display.innerText;
         }
         else if (mathValues.currentOperator !== '') {
-            display.innerText += e.target.innerText;
-            mathValues.secondOperand += +e.target.innerText;
+            display.innerText += e.target.id;
+            mathValues.secondOperand += +e.target.id;
         }
         else {
-            display.innerText += e.target.innerText;
-            mathValues.secondOperand += e.target.innerText;
+            display.innerText += e.target.id;
+            mathValues.secondOperand += e.target.id;
         }
     }
+    ;
 }
 ;
+// operator button listener
 let operators = ['+', '-', '/', '*'];
 let operatorBtns = qasCalc('.operator');
 operatorBtns.forEach(button => {
@@ -43,27 +55,29 @@ operatorBtns.forEach(button => {
         operatorClick(e, lastChar);
     });
 });
+// operator button handler
 function operatorClick(e, lastChar) {
-    if (mathValues.scientific === true) { // scientific mode in ON
-        console.log(operatorBtns);
-        display.innerText += e.target.innerText;
+    if (mathValues.scientific === true) { // scientific mode
+        display.innerText += e.target.id;
     }
     else {
         if (mathValues.currentOperator === '') { // operator not assigned yet.
             display.innerText += e.target.id;
-            mathValues.currentOperator = e.target.innerText;
+            mathValues.currentOperator = e.target.id;
         }
-        else if (mathValues.currentOperator !== '' && operators.includes(lastChar)) { // an operator has already been clicked once.
+        else if (mathValues.currentOperator !== '' && operators.includes(lastChar)) { // operator has already been clicked once => change operator
             display.innerText = display.innerText.slice(0, -1); // delete operator from display.
             display.innerText += e.target.id; // add new operator to display.
-            mathValues.currentOperator = e.target.innerText; // set new currentOperator.
+            mathValues.currentOperator = e.target.id; // set new operator as currentOperator.
         }
         else if (mathValues.currentOperator !== '') { // operator been clicked after two operands and operator are already been clickd.
-            display.innerText = eval(display.innerText.replace(/[^-+/.*\d]/g, ''));
-            mathValues.firstOperand = display.innerText;
-            mathValues.secondOperand = '';
-            display.innerText += e.target.id;
-            mathValues.currentOperator = e.target.innerText;
+            let res = eval(display.innerText.replace(/[^-+/.*\d]/g, '')); // calculate result
+            log.innerText += display.innerText + '=' + res + '\n'; // add operations + result to log
+            display.innerText = res; // add result to screen display
+            mathValues.firstOperand = display.innerText; // set result ass first operand
+            mathValues.secondOperand = ''; // restart second operand
+            display.innerText += e.target.id; // add new operator to screen display
+            mathValues.currentOperator = e.target.id; // set new operator as current operator
         }
     }
     ;
@@ -71,7 +85,7 @@ function operatorClick(e, lastChar) {
 ;
 let backBtn = byIdCalc('back');
 backBtn.addEventListener('click', () => {
-    if (mathValues.scientific === false) {
+    if (mathValues.scientific === false) { // basic mode
         if (mathValues.currentOperator === '') {
             mathValues.firstOperand = '';
             display.innerText = '';
@@ -85,7 +99,9 @@ backBtn.addEventListener('click', () => {
             display.innerText = mathValues.firstOperand + mathValues.currentOperator;
         }
     }
-    ;
+    else { // scientiific mode
+        display.innerText = display.innerText.slice(0, display.innerText.length - 1);
+    }
 });
 let clearBtn = byIdCalc('C');
 clearBtn.addEventListener('click', () => {
@@ -93,31 +109,98 @@ clearBtn.addEventListener('click', () => {
     mathValues.secondOperand = '';
     mathValues.currentOperator = '';
     display.innerText = '';
+    log.innerText = '';
 });
+// eqaul button + history log
 let equalBtn = byIdCalc('equal');
 equalBtn.addEventListener('click', () => {
-    display.innerText = eval(display.innerText.replace(/[^-+/.*\d]/g, ''));
-    mathValues.valueCalculated = display.innerText;
+    let res = eval(display.innerText);
+    if (mathValues.remote === true) { // remote mode  
+        mathJSresult();
+    }
+    else if (mathValues.scientific === false) { // basic mode
+        basicEqual(res);
+    }
+    else { // scientific mode
+        scientificEqual(res);
+    }
 });
+function basicEqual(res) {
+    log.innerText += mathValues.firstOperand +
+        mathValues.currentOperator +
+        mathValues.secondOperand +
+        '=' + res + '\n';
+    display.innerText = res;
+}
+;
+function scientificEqual(res) {
+    log.innerText += display.innerText + '=' + res + '\n';
+    display.innerText = res;
+}
+;
+// remote mode query - remote equal
+async function mathJSresult() {
+    let basicURL = 'http://api.mathjs.org/v4/?expr=';
+    let expresion = encodeURIComponent(display.innerText);
+    try {
+        const response = await fetch(basicURL + expresion);
+        if (!response.ok) {
+            throw new Error(`Error occurred, ${response.status}`);
+        }
+        const result = await response.text();
+        display.innerText = result;
+        console.log(`response from math.js: ${result}`);
+    }
+    catch (err) {
+        console.log(err);
+        display.innerText = 'Error occurred, please restart and try again.';
+    }
+}
+;
+// let basicURL:string = 'http://api.mathjs.org/v4/?expr=';
+// let expresion:string = encodeURIComponent(display.innerText);
+// try {
+//     fetch(basicURL + expresion)
+//     .then(res => res.text())
+//     .then(result => {
+//         display.innerText = result;
+//         console.log('calculated by mathjs:', result)
+//     });
+// } catch(err) {
+//     console.log(err)
+//     display.innerText = 'Error occurred, please restart and try again.'
+//     }
+// scientific mode button
 let scientificMode = byIdCalc('scientific-mode');
 scientificMode.addEventListener('click', () => {
     display.innerText = '';
-    mathValues = {
-        scientific: true,
-        firstOperand: '',
-        secondOperand: '',
-        currentOperator: '',
-        valueCalculated: ''
-    };
+    mathValues.scientific = true;
+    mathValues.currentOperator = '';
+    mathValues.firstOperand = '';
+    mathValues.secondOperand = '';
+    mathValues.valueCalculated = '';
 });
+// basic mode button
 let basicMode = byIdCalc('basic-mode');
 basicMode.addEventListener('click', () => {
     display.innerText = '';
     mathValues = {
         scientific: false,
+        remote: false,
         firstOperand: '',
         secondOperand: '',
         currentOperator: '',
         valueCalculated: ''
     };
+});
+// remote mode function
+let remote = byIdCalc('remote');
+remote.addEventListener('click', () => {
+    if (mathValues.remote === false) {
+        mathValues.remote = true;
+        mathValues.scientific = true;
+    }
+    else {
+        mathValues.remote = false;
+    }
 });

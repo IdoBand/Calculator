@@ -1,0 +1,1115 @@
+* {
+    text-decoration: none;
+    list-style: none;
+    
+ }
+
+body { margin:0;
+    font-family: "montserrat,sans-serif";
+}
+
+
+// when a mode is on, this is its button BG color
+@mixin oncolor {
+    background-color: rgb(230, 167, 9);
+}
+
+.on {
+    @include oncolor();
+}
+
+/* dark mode */
+.dark {
+    background-color: black;
+
+    #log {background-color: #bfc4c9}
+
+    .signs {background-color: rgb(4, 4, 83);}
+
+    .on {
+        @include oncolor();
+    }
+
+    button{
+        background-color: #838080;  
+        }
+}
+
+
+/* display screen light */
+#display.light {
+    background-color: rgb(212, 188, 127);
+}
+/* #blank-left { grid-area: blank-left;} */
+/* #blank-right { grid-area: blank-right;} */
+
+
+
+/* #######################   settings form  ###################### */
+#settings-form {
+    top: 90px;
+    position: absolute;
+    margin: 10px;
+    background-image: linear-gradient(black, grey);
+    color: white;
+    border-top: 1px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+
+    
+    #backgroundcolor {
+        display: flex;
+    }
+
+    @mixin flex-column {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    #bg-radio {
+        @include flex-column();
+    }
+
+    #bg-labels {
+        @include flex-column();
+    }
+    
+    /* ############################### */
+    #fonts-family {
+        @include flex-column();
+    }
+    
+    #fonts-radio {
+        @include flex-column();
+    }
+    
+    #fonts-labales {
+        @include flex-column();
+    }
+    /* ############################### */
+    #darkmode {
+        display: flex;
+    }
+    #dark-mode-radio {
+        @include flex-column()
+    }
+    
+    #dark-mode-labels {
+        @include flex-column()
+    }
+    
+    h3 {
+        margin: 5px;
+    }
+    
+    fieldset {
+        max-width: 200px;
+        border-radius: 20px;
+        margin: 5px;
+    }
+
+    @mixin form-buttons {
+        border-radius: 5px;
+        border-width: 0.5px;
+        background-color: rgb(95, 95, 219);
+        color: whitesmoke;
+        margin: 2px;
+        gap: 2px;
+        width: 100px;
+        height: 20px;
+        font-size: 14px
+    }
+
+    .font-button {
+        @include form-buttons();
+        min-height: 20px
+    }
+
+
+    .color-button {
+        @include form-buttons();
+        }
+
+    @mixin form-colors{
+        width: 20px;
+        height: 20px;
+        margin: 2px;
+        border-radius: 10px;
+    }
+    #blue {background-color: blue;
+        @include form-colors();}
+
+    #green {background-color: rgb(26, 183, 26);
+        @include form-colors();}
+
+    #orange {background-color: orange;
+        @include form-colors();}
+
+    #red {background-color: red;
+        @include form-colors();}
+
+    #black {background-color: black;
+        @include form-colors();}
+
+    .dark-mode-button {
+        @include form-buttons();
+    }
+
+    #exit-reset-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 10px;
+        gap: 10px;
+    }
+
+    .exit-reset {
+        border-radius: 5px;
+        border-width: 0.5px;
+        background-color: rgb(95, 95, 219);
+        color: whitesmoke;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 3px;
+        height: 30px;
+        min-width: 80px;
+    }
+    
+    button:hover{border-radius: 5px;
+        cursor: pointer;
+        color: black;
+        background-color: rgb(92, 92, 175);
+    }
+}
+
+/* ##################################################################### */
+#operations-log {grid-area: operations-log;
+    display: grid;
+    grid-template-areas: "operations-log-header"
+                         "log";
+}
+
+#operations-log-header {
+    grid-area: operations-log-header;
+}
+
+#log {
+    grid-area: log;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    text-indent: 3px;
+    border-style: ridge;
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: #bfc4c9;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+
+
+#calc {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 2fr 0.5fr 1fr ;
+        grid-template-areas: "operations-log left-column middle-column right-column scientific";
+    }
+
+#left-column {
+    grid-area: left-column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+
+    }
+/* ###################### */
+
+#middle-column {
+    grid-area: middle-column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:"wide wide wide"
+                        "nums nums nums";}
+                        
+/* my-calculator header, screen and C button */
+#wide {           
+    grid-area: wide;
+    display: grid;
+    grid-template-areas: "my-calculator"
+                         "display"
+                         "c";
+}  
+
+#my-calculator {grid-area: my-calculator;
+    height: 33px;
+}
+#display{grid-area: display;
+    display: flex;
+    align-items: center;
+    background-color: #bfc4c9;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: black;
+    border-style: ridge;
+    margin: 1px;
+    padding: 4px;
+    height: 40px;
+}
+#c{grid-area: c;
+}
+    
+#nums { 
+    grid-area: nums;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+
+/* ###################### */
+#right-column {
+    grid-area: right-column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+@mixin oper-button {
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: rgb(95, 95, 219);
+    color: whitesmoke;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 3px;
+    margin: 1px;
+    padding: 3px;
+    height: 40px;
+    font-size: 20px;
+}
+button{
+    @include oper-button();
+}
+
+button:hover{border-radius: 5px;
+    color: black;
+}
+
+
+ #C {
+    background-color: rgb(216, 68, 68);
+}
+
+.digit {
+    background-image: linear-gradient(75deg, #b4c0da, #9ce1cb);
+    border-radius: 5px;
+    border-width: 0.5px;
+    color: black;
+    transition: 0.4s;
+}
+
+.digit:hover {
+    background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
+}
+
+/* scientific */
+
+#scientific{grid-area: scientific;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "scientific-header"
+                        "power"
+                        "base";
+                        
+}
+
+#scientific-header{
+    grid-area: scientific-header;
+    height: 125px;
+}
+
+.signs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: rgb(83, 83, 134);
+    color: whitesmoke;
+    transition: 0.3s;
+    margin: 1px;
+    height: 40px;
+    text-align: center;
+}
+
+
+
+#power{
+    grid-area: power;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#power{
+    grid-area: power;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#base{
+    grid-area: base;
+}
+
+#base button{
+    height: 40px;
+    width: 99%;
+}
+
+
+// info message
+#info-message {
+    background-image: linear-gradient(black, grey);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+
+}
+
+
+/*###################### Header ######################*/
+
+header {
+    position: sticky;
+    top: 0;
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background-image: linear-gradient(black, grey);
+    transition: 0.4s;
+    width: 100%;
+    margin: 0;
+}
+
+.header a { 
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    color: whitesmoke;
+    margin: 5px;}
+
+.header h1 {
+    color: whitesmoke;
+    text-shadow: 2px 2px 2px #838080;}
+
+.header:hover {
+    background-color: #8d8f92;
+    }
+
+.logo{
+    border-radius: 40px;
+    width: 80px; 
+    height:80px;
+}
+
+#user-img{
+    margin-left: auto;
+    padding: 5px;
+}
+
+
+// ############################################################################################################
+
+@media only screen and (max-width: 600px) {
+    * {
+        text-decoration: none;
+        list-style: none;
+        
+     }
+    
+    body { margin:0;
+        font-family: "montserrat,sans-serif";
+    }
+    
+    img {height: 20px;
+        width: 20px;
+    }
+    // when a mode is on, this is its button BG color
+    @mixin oncolor {
+        background-color: rgb(230, 167, 9);
+    }
+    
+    .on {
+        @include oncolor();
+    }
+    
+    /* dark mode */
+    .dark {
+        background-color: black;
+    
+        #log {background-color: #bfc4c9}
+    
+        .signs {background-color: rgb(4, 4, 83);}
+    
+        .on {
+            @include oncolor();
+        }
+    
+        button{
+            background-color: #838080;  
+            }
+    }
+    
+    
+    /* display screen light */
+    #display.light {
+        background-color: rgb(212, 188, 127);
+    }
+    /* #blank-left { grid-area: blank-left;} */
+    /* #blank-right { grid-area: blank-right;} */
+    
+    
+    
+    /* #######################   settings form  ###################### */
+    #settings-form {
+        top: 90px;
+        position: absolute;
+        margin: 10px;
+        background-image: linear-gradient(black, grey);
+        color: white;
+        border-top: 1px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: rgb(255, 255, 255);
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+    
+        
+        #backgroundcolor {
+            display: flex;
+        }
+    
+        @mixin flex-column {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #bg-radio {
+            @include flex-column();
+        }
+    
+        #bg-labels {
+            @include flex-column();
+        }
+        
+        /* ############################### */
+        #fonts-family {
+            @include flex-column();
+        }
+        
+        #fonts-radio {
+            @include flex-column();
+        }
+        
+        #fonts-labales {
+            @include flex-column();
+        }
+        /* ############################### */
+        #darkmode {
+            display: flex;
+        }
+        #dark-mode-radio {
+            @include flex-column()
+        }
+        
+        #dark-mode-labels {
+            @include flex-column()
+        }
+        
+        h3 {
+            margin: 5px;
+        }
+        
+        fieldset {
+            max-width: 150px;
+            border-radius: 20px;
+            margin: 5px;
+        }
+    
+        @mixin form-buttons {
+            border-radius: 5px;
+            border-width: 0.5px;
+            background-color: rgb(95, 95, 219);
+            color: whitesmoke;
+            margin: 2px;
+            gap: 2px;
+            width: 100px;
+            height: 20px;
+            font-size: 14px
+        }
+    
+        .font-button {
+            @include form-buttons();
+        }
+    
+    
+        .color-button {
+            @include form-buttons();
+            }
+    
+        @mixin form-colors{  
+            width: 20px;
+            height: 20px;
+            margin: 2px;
+            border-radius: 10px;
+        }
+        #blue {background-color: blue;
+            @include form-colors();}
+    
+        #green {background-color: rgb(26, 183, 26);
+            @include form-colors();}
+    
+        #orange {background-color: orange;
+            @include form-colors();}
+    
+        #red {background-color: red;
+            @include form-colors();}
+    
+        #black {background-color: black;
+            @include form-colors();}
+    
+        .dark-mode-button {
+            @include form-buttons();
+        }
+    
+        #exit-reset-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 10px;
+            gap: 10px;
+        }
+    
+        .exit-reset {
+            border-radius: 5px;
+            border-width: 0.5px;
+            background-color: rgb(95, 95, 219);
+            color: whitesmoke;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 3px;
+            height: 30px;
+            min-width: 80px;
+        }
+        
+        button:hover{border-radius: 5px;
+            cursor: pointer;
+            color: black;
+            background-color: rgb(92, 92, 175);
+        }
+    }
+    
+    /* ##################################################################### */
+    #operations-log {grid-area: operations-log;
+        display: grid;
+        grid-template-areas: "operations-log-header"
+                             "log";
+    }
+    
+    #operations-log-header {
+        grid-area: operations-log-header;
+    }
+    
+    #log {
+        grid-area: log;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        text-indent: 3px;
+        border-style: ridge;
+        border-width: 2px;
+        border-radius: 5px;
+        background-color: #bfc4c9;
+        justify-content: flex-start;
+        align-items: flex-start;
+        
+    }
+    
+    
+    #calc {
+            display: grid;
+            grid-template-columns: 1fr 2fr  1fr;
+            grid-template-areas: "left-column middle-column right-column"
+                                    "scientific scientific scientific"
+                                 "operations-log operations-log operations-log";
+                                }
+
+    
+    #left-column {
+        grid-area: left-column;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 1fr);
+    
+        }
+    /* ###################### */
+    
+    #middle-column {
+        grid-area: middle-column;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:"wide wide wide"
+                            "nums nums nums";}
+                            
+    /* my-calculator header, screen and C button */
+    #wide {           
+        grid-area: wide;
+        display: grid;
+        grid-template-areas: "my-calculator"
+                             "display"
+                             "c";
+    }  
+    
+    #my-calculator {grid-area: my-calculator;
+        height: 33px;
+    }
+    #display{grid-area: display;
+        display: flex;
+        align-items: center;
+        background-color: #bfc4c9;
+        border-radius: 5px;
+        border-width: 1px;
+        border-color: black;
+        border-style: ridge;
+        margin: 1px;
+        padding: 4px;
+        height: 40px;
+    }
+    #c{grid-area: c;
+    }
+        
+    #nums { 
+        grid-area: nums;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    
+    
+    /* ###################### */
+    #right-column {
+        grid-area: right-column;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 1fr);
+    }
+    
+    @mixin oper-button {
+        border-radius: 5px;
+        border-width: 0.5px;
+        color: whitesmoke;
+        cursor: pointer;
+        transition: 0.3s;
+        padding: 3px;
+        margin: 1px;
+        padding: 3px;
+        height: 40px;
+        font-size: 20px;
+    }
+    button{
+        @include oper-button();
+    }
+    
+    button:hover{border-radius: 5px;
+        color: black;
+    }
+
+    
+    
+     #C {
+        background-color: rgb(216, 68, 68);
+    }
+    
+    .digit {
+        background-image: linear-gradient(75deg, #b4c0da, #9ce1cb);
+        border-radius: 5px;
+        border-width: 0.5px;
+        color: black;
+        transition: 0.4s;
+    }
+    
+    .digit:hover {
+        background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
+    }
+    
+    /* scientific */
+    
+    #scientific{grid-area: scientific;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "scientific-header"
+                            "power"
+                            "base";
+                            
+    }
+    
+    #scientific-header{
+        grid-area: scientific-header;
+        height: 40px;
+    }
+    
+    .signs {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        border-width: 0.5px;
+        background-color: rgb(83, 83, 134);
+        color: whitesmoke;
+        transition: 0.3s;
+        margin: 1px;
+        height: 40px;
+        text-align: center;
+    }
+    
+    
+    
+    #power{
+        grid-area: power;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #power{
+        grid-area: power;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #base{
+        grid-area: base;
+    }
+    
+    #base button{
+        height: 40px;
+        width: 99%;
+    }
+    
+    
+    // info message
+    #info-message {
+        background-image: linear-gradient(black, grey);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        border-radius: 20px;
+        margin: 10px;
+    }
+    
+    
+    /*###################### Header ######################*/
+    
+    header {
+        position: sticky;
+        top: 0;
+        grid-area: header;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        background-image: linear-gradient(black, grey);
+        transition: 0.4s;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .header a { 
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+        color: whitesmoke;
+        margin: 5px;}
+    
+    .header h1 {
+        color: whitesmoke;
+        text-shadow: 2px 2px 2px #838080;}
+    
+    .header:hover {
+        background-color: #8d8f92;
+        }
+    
+    .logo{
+        border-radius: 40px;
+        width: 80px; 
+        height:80px;
+    }
+    
+    #user-img{
+        margin-left: auto;
+        padding: 5px;
+    }
+}
+
+// @media only screen and (max-width: 600px) {
+    
+
+
+    
+// * {font-family: "montserrat",sans-serif;
+//     text-decoration: none;
+//     list-style: none;
+    
+//     }
+
+// body { margin:0;
+//         display: grid;
+//         grid-template-columns: 2fr 2fr 2fr;
+//         grid-template-areas:"header header header " 
+//                             "blank-left calculator blank-right"
+//                             "blank-left calculator blank-right";
+// }
+
+// .dark {
+//     background-color: black;
+// }
+
+// .dark #log {background-color: #bfc4c9}
+// .dark .signs {background-color: rgb(4, 4, 83);}
+
+// body.dark button{
+//     background-color: #838080;
+// }
+// #display.dark {
+//     background-color: rgb(217, 219, 95);
+// }
+
+// #blank-left { grid-area: blank-left;}
+// #blank-right { grid-area: blank-right;}
+
+// img {height: 20px;
+//     width: 20px;
+// }
+
+
+// /* ##################################################################### */
+// #calc { grid-area: calculator;
+//         min-width: 350px;
+    
+//         display: grid;
+//         grid-template-columns: 1fr 3fr 1fr;
+//         grid-template-areas: "left-column middle-column right-column"
+//                                 "scientific scientific scientific"
+//                                 "operations-log operations-log operations-log";
+//     }
+
+// #left-column {
+//     grid-area: left-column;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, 1fr);
+
+//     }
+// /* ###################### */
+
+// #middle-column {
+//     grid-area: middle-column;
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr;
+//     grid-template-areas:"wide wide wide"
+//                         "nums nums nums";}
+                        
+// /* my-calculator header, screen and C button */
+// #wide {           
+//     grid-area: wide;
+//     display: grid;
+//     grid-template-areas: "my-calculator"
+//                             "display"
+//                             "c";
+// }  
+
+// #my-calculator {grid-area: my-calculator;
+//     height: 33px;
+// }
+// #display{grid-area: display;
+//     display: flex;
+//     align-items: center;
+//     background-color: #bfc4c9;
+//     border-radius: 5px;
+//     border-width: 1px;
+//     border-color: black;
+//     border-style: ridge;
+//     margin: 1px;
+//     padding: 4px;
+//     height: 40px;
+// }
+// #c{grid-area: c;
+// }
+    
+// #nums { 
+//     grid-area: nums;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+// }
+
+
+
+// /* ###################### */
+// #right-column {
+//     grid-area: right-column;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, 1fr);
+// }
+
+// button{border-radius: 5px;
+//     border-width: 0.5px;
+//     background-color: rgb(95, 95, 219);
+//     color: whitesmoke;
+//     cursor: pointer;
+//     transition: 0.3s;
+//     padding: 3px;
+//     margin: 1px;
+//     padding: 3px;
+//     height: 40px;
+//     font-size: 20px;
+
+// }
+
+// button:hover{border-radius: 5px;
+//     cursor: pointer;
+//     color: black;
+//     background-color: rgb(92, 92, 175);
+// }
+
+
+// #C {
+//     background-color: rgb(216, 68, 68);
+// }
+
+// .digit {
+//     background-image: linear-gradient(75deg, #b4c0da, #9ce1cb);
+//     border-radius: 5px;
+//     border-width: 0.5px;
+//     color: black;
+//     transition: 0.4s;
+// }
+
+// .digit:hover {
+//     background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
+// }
+// /* scientific */
+
+// #scientific{grid-area: scientific;
+//     display: grid;
+//     grid-template-columns: 3fr 1fr;
+//     grid-template-areas: "scientific-header scientific-header"
+//                         "power base";
+                        
+// }
+
+// #scientific-header{
+//     grid-area: scientific-header;
+//     max-height: 40px;
+    
+// }
+
+// .signs {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border-radius: 5px;
+//     border-width: 0.5px;
+//     background-color: rgb(83, 83, 134);
+//     color: whitesmoke;
+//     transition: 0.3s;
+//     margin: 1px;
+//     height: 40px;
+//     text-align: center;
+// }
+
+
+
+// #power{
+//     grid-area: power;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+// }
+
+// #base{
+//     grid-area: base;
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: 1fr;
+// }
+
+// #base button{
+//     height: 97%;
+// }
+
+// #operations-log {grid-area: operations-log;
+//                 display: grid;
+//                 grid-template-areas: "operations-log-header"
+//                                     "log";
+// }
+
+// #operations-log-header {
+//     grid-area: operations-log-header;
+// }
+
+// #log {
+//     grid-area: log;
+//     min-height: 50px;
+//     display: flex;
+//     align-items: center;
+//     text-indent: 3px;
+//     border-radius: 5px;
+//     border-width: 1px;
+//     border-color: black;
+//     border-style: solid;
+//     background-color: #bfc4c9;
+//     margin: 1px;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+// }
+
+// /*###################### Header ######################*/
+
+// header {
+//     position: sticky;
+//     top: 0;
+//     grid-area: header;
+//     display: flex;
+//     align-items: center;
+//     padding: 0;
+//     background-color: #bfc4c9;
+//     transition: 0.4s;
+//     width: 100%;
+//     margin: 0;
+// }
+
+// .header a { 
+//     cursor: pointer;
+//     text-align: left;
+//     text-decoration: none;
+//     color: whitesmoke;
+//     margin: 5px;}
+
+// .header h1 {
+//     color: whitesmoke;
+//     text-shadow: 2px 2px 2px #838080;}
+
+// .header:hover {
+//     background-color: #8d8f92;
+//     }
+
+// .logo{
+//     border-radius: 40px;
+//     width: 80px; 
+//     height:80px;
+// }
+
+// #user-img{
+//     margin-left: auto;
+//     padding: 5px;
+// }
+//   }
