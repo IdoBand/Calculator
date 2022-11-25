@@ -121,18 +121,22 @@ clearBtn.addEventListener('click', () => {
 // eqaul button + history log
 let equalBtn = byIdCalc('equal')
 equalBtn.addEventListener('click', () =>{
-    let res = eval(display.innerText);
+    try {
+        let res = eval(display.innerText);
     
-    if (mathValues.remote === true) {            // remote mode  
-        mathJSresult();
+        if (mathValues.remote === true) {              // remote mode       
+            mathJSresult();
+        }
+        else if (mathValues.scientific === false) {  // basic mode
+            basicEqual(res);
+        }
+        else {                                      // scientific mode
+            scientificEqual(res);
+        }
+    } catch (err){
+        console.log(`error: ${err}`)
+        display.innerText = 'Math / Syntax error, please restart with "C" and try again.';
     }
-    else if (mathValues.scientific === false) {  // basic mode
-        basicEqual(res);
-    }
-    else {                                    // scientific mode
-        scientificEqual(res);
-    }
-
 });
 
 function basicEqual(res) {
@@ -153,10 +157,10 @@ async function mathJSresult() {
     let basicURL:string = 'http://api.mathjs.org/v4/?expr=';
     let expresion:string = encodeURIComponent(display.innerText);
     try {
-        const response = await fetch(basicURL + expresion)
+        let response = await fetch(basicURL + expresion)
 
-        if (!response.ok) {
-            throw new Error(`Error occurred, ${response.status}`)
+        if (!response) {
+            throw new Error(`Error! status:${response.status}`)
         }
         const result = await response.text();
         display.innerText = result
