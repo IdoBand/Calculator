@@ -152,39 +152,33 @@ function scientificEqual(res) {
     display.innerText = res;
 };
 
+// this function purpose is to stop request from math.js after 2 seconds
+async function fetchWithTimeout(resource: string, options) {
+    const { timeout = 2000 } = options;
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    const response = await fetch(resource, {...options,
+                                                                signal: controller.signal //enabling abort
+    });
+    clearTimeout(id); //clears the abort timing function if the request completes faster than timeout time.
+    return response;
+}
+
+
 // remote mode query - remote equal
 async function mathJSresult() {
-    let basicURL:string = 'http://api.mathjs.org/v4/?expr=';
-    let expresion:string = encodeURIComponent(display.innerText);
     try {
-        let response = await fetch(basicURL + expresion)
-
-        if (!response) {
-            throw new Error(`Error! status:${response.status}`)
-        }
+        const url:string = 'http://api.mathjs.org/v4/?expr=' + encodeURIComponent(display.innerText);
+        const response = await fetchWithTimeout(url, { timeout: 2000 })
         const result = await response.text();
-        display.innerText = result
-        console.log(`response from math.js: ${result}`)
+        display.innerText = result;
+        console.log(`response from math.js was successful: ${result}`)
 
     } catch(err) {
         console.log(err)
-        display.innerText = 'Error occurred, please restart and try again.'
+        alert(`Request timed out. \nTry using basic mode instead.`)
         }
     };
-
-    // let basicURL:string = 'http://api.mathjs.org/v4/?expr=';
-    // let expresion:string = encodeURIComponent(display.innerText);
-    // try {
-    //     fetch(basicURL + expresion)
-    //     .then(res => res.text())
-    //     .then(result => {
-    //         display.innerText = result;
-    //         console.log('calculated by mathjs:', result)
-    //     });
-    // } catch(err) {
-    //     console.log(err)
-    //     display.innerText = 'Error occurred, please restart and try again.'
-    //     }
 
 // scientific mode button
 let scientificMode = byIdCalc('scientific-mode');
@@ -222,5 +216,3 @@ remote.addEventListener('click', () => {
         mathValues.remote = false
     }
 });
-
-
