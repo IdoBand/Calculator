@@ -1,9 +1,9 @@
 // these 2 functios are just shortcuts to select items
-const qasCalc = document.querySelectorAll.bind(document);
+const qsaCalc = document.querySelectorAll.bind(document);
 const byIdCalc = document.getElementById.bind(document);
 
-
-let mathValues = {
+// basic mode values
+let basicMathValues = {
     scientific: false,
     remote: false,
     firstOperand: '',
@@ -11,6 +11,7 @@ let mathValues = {
     currentOperator: '',
     valueCalculated: ''
 };
+
 // screen display 
 const display = byIdCalc('display');
 
@@ -18,7 +19,7 @@ const display = byIdCalc('display');
 const log = byIdCalc('log');
 
 // digit buttons event listener
-let digitBtns = qasCalc('.digit');
+let digitBtns = qsaCalc('.digit');
 digitBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         let lastChar = display.innerText.charAt(display.innerText.length-1);
@@ -31,21 +32,21 @@ function digitClick (e, lastChar) {
     if (e.target.innerText === '0' && lastChar === '/') {     //preventing division by 0
         alert("YOUR'E NOT ALLOWED TO DIVIDE BY 0!");
     }
-    else if (mathValues.scientific === true) {                // scientific mode
+    else if (basicMathValues.scientific === true) {                // scientific mode
         display.innerText += e.target.id;
     }
     else {                                                    // basic mode
-        if (mathValues.currentOperator === ''){
+        if (basicMathValues.currentOperator === ''){
             display.innerText += e.target.id;
-            mathValues.firstOperand = display.innerText
+            basicMathValues.firstOperand = display.innerText
         }
-        else if (mathValues.currentOperator !== '') {
+        else if (basicMathValues.currentOperator !== '') {
         display.innerText += e.target.id;
-        mathValues.secondOperand += +e.target.id;
+        basicMathValues.secondOperand += +e.target.id;
         }
         else {
             display.innerText += e.target.id;
-            mathValues.secondOperand += e.target.id;
+            basicMathValues.secondOperand += e.target.id;
         }
     };
 };
@@ -53,7 +54,7 @@ function digitClick (e, lastChar) {
 
 // operator button listener
 let operators: string[] = ['+','-','/','*'];
-let operatorBtns = qasCalc('.operator')
+let operatorBtns = qsaCalc('.operator')
 operatorBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         let lastChar = display.innerText.charAt(display.innerText.length-1);
@@ -63,45 +64,46 @@ operatorBtns.forEach(button => {
 
 // operator button handler
 function operatorClick (e, lastChar: string) {
-    if (mathValues.scientific === true) {            // scientific mode
+    if (basicMathValues.scientific === true) {            // scientific mode
         display.innerText += e.target.id;
     }
     else {
-        if (mathValues.currentOperator === ''){                // operator not assigned yet.
+        if (basicMathValues.currentOperator === ''){                // operator not assigned yet.
             display.innerText += e.target.id;
-            mathValues.currentOperator = e.target.id;
+            basicMathValues.currentOperator = e.target.id;
         }
-        else if (mathValues.currentOperator !== '' && operators.includes(lastChar)){ // operator has already been clicked once => change operator
+        else if (basicMathValues.currentOperator !== '' && operators.includes(lastChar)){ // operator has already been clicked once => change operator
             display.innerText = display.innerText.slice(0,-1);        // delete operator from display.
             display.innerText += e.target.id;                         // add new operator to display.
-            mathValues.currentOperator = e.target.id;          // set new operator as currentOperator.
+            basicMathValues.currentOperator = e.target.id;          // set new operator as currentOperator.
         }
-        else if (mathValues.currentOperator !== ''){             // operator been clicked after two operands and operator are already been clickd.
+        else if (basicMathValues.currentOperator !== ''){             // operator been clicked after two operands and operator are already been clickd.
             let res = eval(display.innerText.replace(/[^-+/.*\d]/g, ''));   // calculate result
             log.innerText += display.innerText + '=' + res + '\n';              // add operations + result to log
             display.innerText = res;                                            // add result to screen display
-            mathValues.firstOperand = display.innerText;                        // set result ass first operand
-            mathValues.secondOperand = '';                                      // restart second operand
+            basicMathValues.firstOperand = display.innerText;                        // set result ass first operand
+            basicMathValues.secondOperand = '';                                      // restart second operand
             display.innerText += e.target.id;                                   // add new operator to screen display
-            mathValues.currentOperator = e.target.id;                    // set new operator as current operator
+            basicMathValues.currentOperator = e.target.id;                    // set new operator as current operator
         }
     };
 };
 
+
 let backBtn = byIdCalc('back');
 backBtn.addEventListener('click', () => {
-    if (mathValues.scientific === false) {      // basic mode
-        if (mathValues.currentOperator === '') {
-            mathValues.firstOperand = '';
+    if (basicMathValues.scientific === false) {      // basic mode
+        if (basicMathValues.currentOperator === '') {
+            basicMathValues.firstOperand = '';
             display.innerText = '';
         }
-        else if (mathValues.secondOperand === '' && mathValues.currentOperator !== '') {
-            mathValues.currentOperator = '';
-            display.innerText = mathValues.firstOperand;
+        else if (basicMathValues.secondOperand === '' && basicMathValues.currentOperator !== '') {
+            basicMathValues.currentOperator = '';
+            display.innerText = basicMathValues.firstOperand;
         }
         else {
-            mathValues.secondOperand = '';
-            display.innerText = mathValues.firstOperand + mathValues.currentOperator;
+            basicMathValues.secondOperand = '';
+            display.innerText = basicMathValues.firstOperand + basicMathValues.currentOperator;
         }
     } 
     else {                                       // scientiific mode
@@ -109,11 +111,12 @@ backBtn.addEventListener('click', () => {
     }
 });
 
+// clear data & display
 let clearBtn = byIdCalc('C')
 clearBtn.addEventListener('click', () => {
-    mathValues.firstOperand = '';
-    mathValues.secondOperand = '';
-    mathValues.currentOperator = '';
+    basicMathValues.firstOperand = '';
+    basicMathValues.secondOperand = '';
+    basicMathValues.currentOperator = '';
     display.innerText = '';
     log.innerText = '';
 });
@@ -124,10 +127,10 @@ equalBtn.addEventListener('click', () =>{
     try {
         let res = eval(display.innerText);
     
-        if (mathValues.remote === true) {              // remote mode       
+        if (basicMathValues.remote === true) {              // remote mode       
             mathJSresult();
         }
-        else if (mathValues.scientific === false) {  // basic mode
+        else if (basicMathValues.scientific === false) {  // basic mode
             basicEqual(res);
         }
         else {                                      // scientific mode
@@ -139,20 +142,22 @@ equalBtn.addEventListener('click', () =>{
     }
 });
 
+// basic mode equal
 function basicEqual(res) {
-    log.innerText += mathValues.firstOperand +
-        mathValues.currentOperator + 
-        mathValues.secondOperand + 
+    log.innerText += basicMathValues.firstOperand +
+        basicMathValues.currentOperator + 
+        basicMathValues.secondOperand + 
         '=' + res + '\n';
         display.innerText = res;
 };
 
+//scientific mode equal
 function scientificEqual(res) {
     log.innerText += display.innerText + '=' +res+'\n';
     display.innerText = res;
 };
 
-// this function purpose is to stop request from math.js after 2 seconds
+// try fetching from math.js API. abort is no response after 2 seconds
 async function fetchWithTimeout(resource: string, options) {
     const { timeout = 2000 } = options;
     const controller = new AbortController();
@@ -164,11 +169,11 @@ async function fetchWithTimeout(resource: string, options) {
     return response;
 }
 
-
-// remote mode query - remote equal
+// remote mode - remote equal
 async function mathJSresult() {
     try {
         const url:string = 'http://api.mathjs.org/v4/?expr=' + encodeURIComponent(display.innerText);
+        
         const response = await fetchWithTimeout(url, { timeout: 2000 })
         const result = await response.text();
         display.innerText = result;
@@ -181,21 +186,21 @@ async function mathJSresult() {
     };
 
 // scientific mode button
-let scientificMode = byIdCalc('scientific-mode');
+let scientificMode = byIdCalc('scientificBtn');
 scientificMode.addEventListener('click', () =>{
     display.innerText = '';
-    mathValues.scientific = true;
-    mathValues.currentOperator = '';
-    mathValues.firstOperand = '';
-    mathValues.secondOperand = '';
-    mathValues.valueCalculated = '';
+    basicMathValues.scientific = true;
+    basicMathValues.currentOperator = '';
+    basicMathValues.firstOperand = '';
+    basicMathValues.secondOperand = '';
+    basicMathValues.valueCalculated = '';
 });
 
 // basic mode button
-let basicMode = byIdCalc('basic-mode');
+let basicMode = byIdCalc('basicBtn');
 basicMode.addEventListener('click', () => {
     display.innerText = '';
-    mathValues = {
+    basicMathValues = {
         scientific: false,
         remote: false,
         firstOperand: '',
@@ -205,15 +210,14 @@ basicMode.addEventListener('click', () => {
     };
 });
 
-// remote mode function
-let remote = byIdCalc('remote')
+// remote mode (mathJS) state function
+let remote = byIdCalc('remoteBtn')
 remote.addEventListener('click', () => {
-    if (mathValues.remote === false) {
-        mathValues.remote = true
-        mathValues.scientific = true
+    if (basicMathValues.remote === false) {
+        basicMathValues.remote = true
+        basicMathValues.scientific = true
     }
     else {
-        mathValues.remote = false
+        basicMathValues.remote = false
     }
 });
-// this line was added to create a new branch & pull request

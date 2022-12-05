@@ -1,11 +1,11 @@
 * {
   text-decoration: none;
   list-style: none;
+  font-family: "montserrat,sans-serif";
 }
 
 body {
   margin: 0;
-  font-family: "montserrat,sans-serif";
 }
 
 .on {
@@ -30,15 +30,14 @@ body {
 }
 
 /* display screen light */
-#display.light {
+#container #basic #display.light {
   background-color: rgb(212, 188, 127);
 }
 
-/* #blank-left { grid-area: blank-left;} */
-/* #blank-right { grid-area: blank-right;} */
 /* #######################   settings form  ###################### */
-#settings-form {
-  top: 90px;
+#settingsForm {
+  display: none;
+  top: 10px;
   position: absolute;
   margin: 10px;
   background-image: linear-gradient(black, grey);
@@ -48,54 +47,52 @@ body {
   border-style: solid;
   border-color: rgb(255, 255, 255);
   border-radius: 20px;
-  justify-content: center;
-  align-items: center;
   /* ############################### */
   /* ############################### */
 }
-#settings-form #backgroundcolor {
+#settingsForm #backgroundcolor {
   display: flex;
 }
-#settings-form #bg-radio {
-  display: flex;
-  flex-direction: column;
-}
-#settings-form #bg-labels {
+#settingsForm #bg-radio {
   display: flex;
   flex-direction: column;
 }
-#settings-form #fonts-family {
+#settingsForm #bg-labels {
   display: flex;
   flex-direction: column;
 }
-#settings-form #fonts-radio {
+#settingsForm #fonts-family {
   display: flex;
   flex-direction: column;
 }
-#settings-form #fonts-labales {
+#settingsForm #fonts-radio {
   display: flex;
   flex-direction: column;
 }
-#settings-form #darkmode {
-  display: flex;
-}
-#settings-form #dark-mode-radio {
+#settingsForm #fonts-labales {
   display: flex;
   flex-direction: column;
 }
-#settings-form #dark-mode-labels {
+#settingsForm #darkmode {
+  display: flex;
+}
+#settingsForm #dark-mode-radio {
   display: flex;
   flex-direction: column;
 }
-#settings-form h3 {
+#settingsForm #dark-mode-labels {
+  display: flex;
+  flex-direction: column;
+}
+#settingsForm h3 {
   margin: 5px;
 }
-#settings-form fieldset {
+#settingsForm fieldset {
   max-width: 200px;
   border-radius: 20px;
   margin: 5px;
 }
-#settings-form .font-button {
+#settingsForm .font-button {
   border-radius: 5px;
   border-width: 0.5px;
   background-color: rgb(95, 95, 219);
@@ -107,7 +104,7 @@ body {
   font-size: 14px;
   min-height: 20px;
 }
-#settings-form .color-button {
+#settingsForm .color-button {
   border-radius: 5px;
   border-width: 0.5px;
   background-color: rgb(95, 95, 219);
@@ -118,42 +115,42 @@ body {
   height: 20px;
   font-size: 14px;
 }
-#settings-form #blue {
+#settingsForm #blue {
   background-color: blue;
   width: 20px;
   height: 20px;
   margin: 2px;
   border-radius: 10px;
 }
-#settings-form #green {
+#settingsForm #green {
   background-color: rgb(26, 183, 26);
   width: 20px;
   height: 20px;
   margin: 2px;
   border-radius: 10px;
 }
-#settings-form #orange {
+#settingsForm #orange {
   background-color: orange;
   width: 20px;
   height: 20px;
   margin: 2px;
   border-radius: 10px;
 }
-#settings-form #red {
+#settingsForm #red {
   background-color: red;
   width: 20px;
   height: 20px;
   margin: 2px;
   border-radius: 10px;
 }
-#settings-form #black {
+#settingsForm #black {
   background-color: black;
   width: 20px;
   height: 20px;
   margin: 2px;
   border-radius: 10px;
 }
-#settings-form .dark-mode-button {
+#settingsForm .dark-mode-button {
   border-radius: 5px;
   border-width: 0.5px;
   background-color: rgb(95, 95, 219);
@@ -164,14 +161,14 @@ body {
   height: 20px;
   font-size: 14px;
 }
-#settings-form #exit-reset-buttons {
+#settingsForm #exit-reset-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 10px;
   gap: 10px;
 }
-#settings-form .exit-reset {
+#settingsForm .exit-reset {
   border-radius: 5px;
   border-width: 0.5px;
   background-color: rgb(95, 95, 219);
@@ -182,7 +179,7 @@ body {
   height: 30px;
   min-width: 80px;
 }
-#settings-form button:hover {
+#settingsForm button:hover {
   border-radius: 5px;
   cursor: pointer;
   color: black;
@@ -190,63 +187,65 @@ body {
 }
 
 /* ##################################################################### */
-#operations-log {
-  grid-area: operations-log;
+#container {
   display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-areas: "history basic scientific";
+  position: relative;
+  /* scientific */
+}
+#container #history {
+  grid-area: history;
+  display: grid;
+  width: 200px;
+  position: absolute;
+  right: 0;
   grid-template-areas: "operations-log-header" "log";
 }
-
-#operations-log-header {
+#container #operations-log-header {
   grid-area: operations-log-header;
 }
-
-#log {
+#container #log {
   grid-area: log;
   min-height: 250px;
   display: flex;
-  align-items: center;
   text-indent: 3px;
-  border-style: ridge;
-  border-width: 2px;
+  border: 2px ridge;
   border-radius: 5px;
   background-color: #bfc4c9;
   justify-content: flex-start;
   align-items: flex-start;
 }
-
-#calc {
+#container #basic {
+  grid-area: basic;
   display: grid;
-  grid-template-columns: 1fr 0.5fr 2fr 0.5fr 1fr;
-  grid-template-areas: "operations-log left-column middle-column right-column scientific";
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: "left-column middle-column right-column";
+  /* ############################### */
+  /* my-calculator header, screen and C button */
+  /* ############################### */
 }
-
-#left-column {
+#container #basic #left-column {
   grid-area: left-column;
   display: grid;
   grid-template-columns: repeat(auto-fit, 1fr);
 }
-
-/* ###################### */
-#middle-column {
+#container #basic #middle-column {
   grid-area: middle-column;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "wide wide wide" "nums nums nums";
 }
-
-/* my-calculator header, screen and C button */
-#wide {
+#container #basic #wide {
   grid-area: wide;
   display: grid;
   grid-template-areas: "my-calculator" "display" "c";
 }
-
-#my-calculator {
+#container #basic #my-calculator {
   grid-area: my-calculator;
   height: 33px;
 }
-
-#display {
+#container #basic #display {
   grid-area: display;
   display: flex;
   align-items: center;
@@ -259,22 +258,29 @@ body {
   padding: 4px;
   height: 40px;
 }
-
-#c {
+#container #basic #c {
   grid-area: c;
 }
-
-#nums {
+#container #basic #nums {
   grid-area: nums;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
-/* ###################### */
-#right-column {
+#container #basic #right-column {
   grid-area: right-column;
   display: grid;
   grid-template-columns: repeat(auto-fit, 1fr);
+}
+#container #scientific {
+  grid-area: scientific;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 200px;
+  grid-template-areas: "scientific-header" "power" "base";
+}
+#container #scientific-header {
+  grid-area: scientific-header;
+  height: 125px;
 }
 
 button {
@@ -312,19 +318,6 @@ button:hover {
   background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
 }
 
-/* scientific */
-#scientific {
-  grid-area: scientific;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas: "scientific-header" "power" "base";
-}
-
-#scientific-header {
-  grid-area: scientific-header;
-  height: 125px;
-}
-
 .signs {
   display: flex;
   align-items: center;
@@ -345,12 +338,6 @@ button:hover {
   grid-template-columns: repeat(2, 1fr);
 }
 
-#power {
-  grid-area: power;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
 #base {
   grid-area: base;
 }
@@ -360,13 +347,17 @@ button:hover {
   width: 99%;
 }
 
-#info-message {
+#info {
+  border: #b4c0da solid;
+  position: absolute;
   background-image: linear-gradient(black, grey);
   color: white;
   text-align: center;
   padding: 10px;
   border-radius: 20px;
-  margin: 10px;
+  margin: 50px;
+  margin-inline: 35%;
+  max-width: 260px;
 }
 
 /*###################### Header ######################*/
@@ -411,18 +402,14 @@ header {
   padding: 5px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   * {
     text-decoration: none;
     list-style: none;
+    font-family: "montserrat,sans-serif";
   }
   body {
     margin: 0;
-    font-family: "montserrat,sans-serif";
-  }
-  img {
-    height: 20px;
-    width: 20px;
   }
   .on {
     background-color: rgb(230, 167, 9);
@@ -444,14 +431,13 @@ header {
     background-color: #838080;
   }
   /* display screen light */
-  #display.light {
+  #container #basic #display.light {
     background-color: rgb(212, 188, 127);
   }
-  /* #blank-left { grid-area: blank-left;} */
-  /* #blank-right { grid-area: blank-right;} */
   /* #######################   settings form  ###################### */
-  #settings-form {
-    top: 90px;
+  #settingsForm {
+    display: none;
+    top: 10px;
     position: absolute;
     margin: 10px;
     background-image: linear-gradient(black, grey);
@@ -461,54 +447,64 @@ header {
     border-style: solid;
     border-color: rgb(255, 255, 255);
     border-radius: 20px;
-    justify-content: center;
-    align-items: center;
     /* ############################### */
     /* ############################### */
   }
-  #settings-form #backgroundcolor {
+  #settingsForm #backgroundcolor {
     display: flex;
   }
-  #settings-form #bg-radio {
-    display: flex;
-    flex-direction: column;
-  }
-  #settings-form #bg-labels {
+  #settingsForm #bg-radio {
     display: flex;
     flex-direction: column;
   }
-  #settings-form #fonts-family {
+  #settingsForm #bg-labels {
     display: flex;
     flex-direction: column;
   }
-  #settings-form #fonts-radio {
+  #settingsForm #fonts-family {
     display: flex;
     flex-direction: column;
   }
-  #settings-form #fonts-labales {
+  #settingsForm #fonts-radio {
     display: flex;
     flex-direction: column;
   }
-  #settings-form #darkmode {
-    display: flex;
-  }
-  #settings-form #dark-mode-radio {
+  #settingsForm #fonts-labales {
     display: flex;
     flex-direction: column;
   }
-  #settings-form #dark-mode-labels {
+  #settingsForm #darkmode {
+    display: flex;
+  }
+  #settingsForm #dark-mode-radio {
     display: flex;
     flex-direction: column;
   }
-  #settings-form h3 {
+  #settingsForm #dark-mode-labels {
+    display: flex;
+    flex-direction: column;
+  }
+  #settingsForm h3 {
     margin: 5px;
   }
-  #settings-form fieldset {
-    max-width: 150px;
+  #settingsForm fieldset {
+    max-width: 200px;
     border-radius: 20px;
     margin: 5px;
   }
-  #settings-form .font-button {
+  #settingsForm .font-button {
+    border-radius: 5px;
+    border-width: 0.5px;
+    background-color: rgb(95, 95, 219);
+    color: whitesmoke;
+    margin: 2px;
+    gap: 2px;
+    width: 100px;
+    height: 20px;
+    font-size: 14px;
+    min-height: 20px;
+  }
+  #settingsForm .color-button {
     border-radius: 5px;
     border-width: 0.5px;
     background-color: rgb(95, 95, 219);
@@ -519,53 +515,42 @@ header {
     height: 20px;
     font-size: 14px;
   }
-  #settings-form .color-button {
-    border-radius: 5px;
-    border-width: 0.5px;
-    background-color: rgb(95, 95, 219);
-    color: whitesmoke;
-    margin: 2px;
-    gap: 2px;
-    width: 100px;
-    height: 20px;
-    font-size: 14px;
-  }
-  #settings-form #blue {
+  #settingsForm #blue {
     background-color: blue;
     width: 20px;
     height: 20px;
     margin: 2px;
     border-radius: 10px;
   }
-  #settings-form #green {
+  #settingsForm #green {
     background-color: rgb(26, 183, 26);
     width: 20px;
     height: 20px;
     margin: 2px;
     border-radius: 10px;
   }
-  #settings-form #orange {
+  #settingsForm #orange {
     background-color: orange;
     width: 20px;
     height: 20px;
     margin: 2px;
     border-radius: 10px;
   }
-  #settings-form #red {
+  #settingsForm #red {
     background-color: red;
     width: 20px;
     height: 20px;
     margin: 2px;
     border-radius: 10px;
   }
-  #settings-form #black {
+  #settingsForm #black {
     background-color: black;
     width: 20px;
     height: 20px;
     margin: 2px;
     border-radius: 10px;
   }
-  #settings-form .dark-mode-button {
+  #settingsForm .dark-mode-button {
     border-radius: 5px;
     border-width: 0.5px;
     background-color: rgb(95, 95, 219);
@@ -576,14 +561,14 @@ header {
     height: 20px;
     font-size: 14px;
   }
-  #settings-form #exit-reset-buttons {
+  #settingsForm #exit-reset-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 10px;
     gap: 10px;
   }
-  #settings-form .exit-reset {
+  #settingsForm .exit-reset {
     border-radius: 5px;
     border-width: 0.5px;
     background-color: rgb(95, 95, 219);
@@ -594,62 +579,71 @@ header {
     height: 30px;
     min-width: 80px;
   }
-  #settings-form button:hover {
+  #settingsForm button:hover {
     border-radius: 5px;
     cursor: pointer;
     color: black;
     background-color: rgb(92, 92, 175);
   }
   /* ##################################################################### */
-  #operations-log {
-    grid-area: operations-log;
+  #container {
     display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "basic" "scientific" "history";
+    position: relative;
+    /* scientific */
+  }
+  #container #history {
+    grid-area: history;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
     grid-template-areas: "operations-log-header" "log";
   }
-  #operations-log-header {
+  #container #operations-log-header {
     grid-area: operations-log-header;
   }
-  #log {
+  #container #log {
     grid-area: log;
     min-height: 250px;
     display: flex;
-    align-items: center;
     text-indent: 3px;
-    border-style: ridge;
-    border-width: 2px;
+    border: 2px ridge;
     border-radius: 5px;
     background-color: #bfc4c9;
     justify-content: flex-start;
     align-items: flex-start;
   }
-  #calc {
+  #container #basic {
+    grid-area: basic;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "left-column middle-column right-column" "scientific scientific scientific" "operations-log operations-log operations-log";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: "left-column middle-column right-column";
+    /* ############################### */
+    /* my-calculator header, screen and C button */
+    /* ############################### */
   }
-  #left-column {
+  #container #basic #left-column {
     grid-area: left-column;
     display: grid;
     grid-template-columns: repeat(auto-fit, 1fr);
   }
-  /* ###################### */
-  #middle-column {
+  #container #basic #middle-column {
     grid-area: middle-column;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: "wide wide wide" "nums nums nums";
   }
-  /* my-calculator header, screen and C button */
-  #wide {
+  #container #basic #wide {
     grid-area: wide;
     display: grid;
     grid-template-areas: "my-calculator" "display" "c";
   }
-  #my-calculator {
+  #container #basic #my-calculator {
     grid-area: my-calculator;
     height: 33px;
   }
-  #display {
+  #container #basic #display {
     grid-area: display;
     display: flex;
     align-items: center;
@@ -662,23 +656,34 @@ header {
     padding: 4px;
     height: 40px;
   }
-  #c {
+  #container #basic #c {
     grid-area: c;
   }
-  #nums {
+  #container #basic #nums {
     grid-area: nums;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  /* ###################### */
-  #right-column {
+  #container #basic #right-column {
     grid-area: right-column;
     display: grid;
     grid-template-columns: repeat(auto-fit, 1fr);
   }
+  #container #scientific {
+    grid-area: scientific;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas: "scientific-header" "power" "base";
+  }
+  #container #scientific-header {
+    grid-area: scientific-header;
+    height: 35px;
+  }
   button {
     border-radius: 5px;
     border-width: 0.5px;
+    background-color: rgb(95, 95, 219);
     color: whitesmoke;
     cursor: pointer;
     transition: 0.3s;
@@ -705,17 +710,6 @@ header {
   .digit:hover {
     background-image: linear-gradient(1deg, #b4c0da, #9ce1cb);
   }
-  /* scientific */
-  #scientific {
-    grid-area: scientific;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "scientific-header" "power" "base";
-  }
-  #scientific-header {
-    grid-area: scientific-header;
-    height: 40px;
-  }
   .signs {
     display: flex;
     align-items: center;
@@ -734,11 +728,6 @@ header {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  #power {
-    grid-area: power;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
   #base {
     grid-area: base;
   }
@@ -746,13 +735,16 @@ header {
     height: 40px;
     width: 99%;
   }
-  #info-message {
+  #info {
+    border: #b4c0da solid;
+    position: absolute;
     background-image: linear-gradient(black, grey);
     color: white;
     text-align: center;
     padding: 10px;
     border-radius: 20px;
-    margin: 10px;
+    margin: 50px;
+    margin-inline: 20%;
   }
   /*###################### Header ######################*/
   header {
