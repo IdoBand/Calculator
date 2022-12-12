@@ -12,55 +12,57 @@
             <a href="./index.html"><h1>Calculator</h1></a>
             <img class="logo" id="user-img" src="./images/Profile.png">
         </header>
-        <main id="info-message">
+        <div id="container">
+            <main id="info">
+                
+            </main>
             
-        </main>
-
-        <div id="calc">
-            <div id="left-column">
-                <button class="" id="info" type="button">&#128712;</button>
-                <button class="" type="button" id="light">&#128161;</button>
-                <button class="" id="history">&#128343;</button>
-                <button class="" id="scientific-mode">&#8732;</button>
-                <button class="" type="button" id="basic-mode">&#9729;</button>
-                <button id="remote" >&#127918;</button>
-                <div id="" class="signs">&nbsp</div>
-            </div>
-
-            <div id="middle-column">
-                <div id="wide">
-                    <div id="my-calculator" class="signs">My Calculator</div>
-                    <div id="display" class=""></div>
-                    <button id="C" class="C">C</button>
-                </div>
-                <div id="nums">
-                    <button class="digit" id="7" type="button">7</button>
-                    <button class="digit" id="8" type="button">8</button>
-                    <button class="digit" id="9" type="button">9</button>
-                    <button class="digit" id="4" type="button">4</button>
-                    <button class="digit" id="5" type="button">5</button>
-                    <button class="digit" id="6" type="button">6</button>
-                    <button class="digit" id="1" type="button">1</button>
-                    <button class="digit" id="2" type="button">2</button>
-                    <button class="digit" id="3" type="button">3</button>
-                    <button class="digit" id="" type="button">&#8723;</button>
-                    <button class="digit" id="0" type="button">0</button>
-                    <button class="digit" id="." type="button">.</button>
+            <main id="basic">
+                <div id="left-column">
+                    <button class="" id="infoBtn" type="button" value="onOff">&#128712;</button>
+                    <button class="" id="lightBtn" type="button" value="onOff">&#128161;</button>
+                    <button class="" id="historyBtn" value="onOff">&#128343;</button>
+                    <button class="" id="scientificBtn" value="onOff">&#8732;</button>
+                    <button class="" id="basicBtn" type="button" value="onOff">&#9729;</button>
+                    <button class="" id="remoteBtn" value="onOff">&#127918;</button>
+                    <div id="" class="signs">&nbsp</div>
                 </div>
 
-            </div>
+                <div id="middle-column">
+                    <div id="wide">
+                        <div id="my-calculator" class="signs">My Calculator</div>
+                        <div id="display" class=""></div>
+                        <button id="C" class="C">C</button>
+                    </div>
+                    <div id="nums">
+                        <button class="digit" id="7" type="button">7</button>
+                        <button class="digit" id="8" type="button">8</button>
+                        <button class="digit" id="9" type="button">9</button>
+                        <button class="digit" id="4" type="button">4</button>
+                        <button class="digit" id="5" type="button">5</button>
+                        <button class="digit" id="6" type="button">6</button>
+                        <button class="digit" id="1" type="button">1</button>
+                        <button class="digit" id="2" type="button">2</button>
+                        <button class="digit" id="3" type="button">3</button>
+                        <button class="digit" id="" type="button">&#8723;</button>
+                        <button class="digit" id="0" type="button">0</button>
+                        <button class="digit" id="." type="button">.</button>
+                    </div>
 
-            <div id="right-column">
-                <button  id="settings" type="button">&#9881;</button>
-                <button class="back" id="back" type="button">&#10152;</button>
-                <button class="operator" id="/" type="button">/</button>
-                <button class="operator" id="*" type="button">X</button>
-                <button class="operator" id="-" type="button">-</button>
-                <button class="operator" id="+" type="button">+</button>
-                <button class="equal" id="equal" type="button">=</button>
+                </div>
 
-            </div>
+                <div id="right-column">
+                    <!-- <a href="./settings.html"></a>  this link is a 2nd options to change settings -->
+                    <button class="" id="settingsBtn" type="button" value="onOff">&#9881;</button>
+                    <button class="back" id="back" type="button">&#10152;</button>
+                    <button class="operator" id="/" type="button">/</button>
+                    <button class="operator" id="*" type="button">X</button>
+                    <button class="operator" id="-" type="button">-</button>
+                    <button class="operator" id="+" type="button">+</button>
+                    <button class="equal" id="equal" type="button">=</button>
 
+                </div>
+            </main>
             <main id="scientific">
                 <div id="scientific-header" class="signs">&#8732; Scientific</div>
                 <div id="power">
@@ -76,66 +78,64 @@
                     <button type="button">Base2</button>
                 </div>
             </main>
-            <!-- history mode -->
-            <main id="operations-log"> 
+            <main id="history"> 
                 <div id="operations-log-header" class="signs">&#128343; Operations-log</div>
                 <div id="log">
                 </div>
             </main>
-        </div>
-        <main id="settings-form">
-                <div id="exit-reset-buttons">
-                    <button class="exit-reset" value="exit">Exit</button>
-                    <button class="exit-reset" value="reset">Reset</button>
-                </div>
-                <h3>Font</h3>
-                <fieldset id="fonts-family">
+            
+            <main id="settingsForm">
+                    <div id="exit-reset-buttons">
+                        <button class="exit-reset" value="exit">Exit</button>
+                        <button class="exit-reset" value="reset">Reset</button>
+                    </div>
+                    <h3>Font</h3>
+                    <fieldset id="fonts-family">
 
-                    <div id="fonts-labels">
-                        <label id="montserrat-label"></label>
-                        <label ></label>
-                        <button class="font-button" id="montserrat,sans-serif">montserrat</button><br>
-                        <button class="font-button" id="fangsong">fangsong</button>
-                        <button class="font-button" id="cursive">Cursive</button>
-                    </div>
+                        <div id="fonts-labels">
+                            <label id="montserrat-label"></label>
+                            <label ></label>
+                            <button class="font-button" id="montserrat,sans-serif">montserrat</button><br>
+                            <button class="font-button" id="fangsong">fangsong</button>
+                            <button class="font-button" id="cursive">Cursive</button>
+                        </div>
 
-                </fieldset>
+                    </fieldset>
 
-                <h3>Background Color</h3>
-                <fieldset id="backgroundcolor">
-                    
-                    <div id="bg-radio">
-                        <div class="form-color" id="blue"></div>
-                        <div class="form-color" id="green"></div>
-                        <div class="form-color" id="orange"></div>
-                        <div class="form-color" id="red"></div>
-                        <div class="form-color" id="black"></div>
-                    </div>
-                    
-                    <div id="bg-labels">
-                        <button class="color-button" value="blue">Blue</button>
-                        <button class="color-button" value="green">Green</button>
-                        <button class="color-button" value="orange">Orange</button>
-                        <button class="color-button" value="red">Red</button>
-                        <button class="color-button" value="black">Black</button>
-                    </div>
-                    
-                </fieldset>
-                <h3>Dark Mode</h3>
-                <fieldset id="darkmode">
-                    <div id="dark-mode-radio">
-                        <div class="" id="">&#127769;</div>
-                        <div class="" id="">&#11096;</div>
-                    </div>
-                    <div id="dark-mode-labels">
-                        <button class="dark-mode-button" id="onlabel" value="true">On</button>
-                        <button class="dark-mode-button" id="offlabel" value="false">Off</button>
-                    </div>
-                    
-                </fieldset>
-                
-
-        </main>
+                    <h3>Background Color</h3>
+                    <fieldset id="backgroundcolor">
+                        
+                        <div id="bg-radio">
+                            <div class="form-color" id="blue"></div>
+                            <div class="form-color" id="green"></div>
+                            <div class="form-color" id="orange"></div>
+                            <div class="form-color" id="red"></div>
+                            <div class="form-color" id="black"></div>
+                        </div>
+                        
+                        <div id="bg-labels">
+                            <button class="color-button" value="blue">Blue</button>
+                            <button class="color-button" value="green">Green</button>
+                            <button class="color-button" value="orange">Orange</button>
+                            <button class="color-button" value="red">Red</button>
+                            <button class="color-button" value="black">Black</button>
+                        </div>
+                        
+                    </fieldset>
+                    <h3>Dark Mode</h3>
+                    <fieldset id="darkmode">
+                        <div id="dark-mode-radio">
+                            <div class="" id="">&#127769;</div>
+                            <div class="" id="">&#11096;</div>
+                        </div>
+                        <div id="dark-mode-labels">
+                            <button class="dark-mode-button" id="onlabel" value="true">On</button>
+                            <button class="dark-mode-button" id="offlabel" value="false">Off</button>
+                        </div>
+                        
+                    </fieldset>
+            </main>
+       </container>
 
 
         <script src="./js/calculator.js"></script>
